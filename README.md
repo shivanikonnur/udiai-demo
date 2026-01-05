@@ -14,15 +14,15 @@ Author-Shivani Konnur<br>
 - Scikit-learn
 <br>
 ## 📂 Project Structure
-AADHAR ANALYSIS/
-├── DATA/        # Input datasets
-├── FIGURES/     # Generated visualizations
+AADHAR ANALYSIS/<br>
+├── DATA/     <br>   # Input datasets
+├── FIGURES/  <br>   # Generated visualizations
 ├── SRC/
-│   └── analysis.py
-├── README.md
-└── .gitignore
+│   └── analysis.py<br>
+├── README.md<br>
+└── .gitignore<br>
 <br>
 ## ▶️ How to Run
-bash
-cd AADHAR\ ANALYSIS
+bash<br>
+cd AADHAR\ ANALYSIS<br>
 python SRC/analysis.py
