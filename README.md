@@ -1,19 +1,19 @@
 # UIDAI Aadhaar Analytics
 UIDAI Aadhaar Data Analytics & Machine Learning project that analyzes enrolment and update data to identify temporal, geographic, and demographic trends. The project focuses on trend detection, anomaly identification, and predictive insights to support data-driven governance.<br>
 Author-Shivani Konnur<br>
-## 🎯 Objectives
+<b>OBJECTIVES</b>
 - Analyze Aadhaar enrolment vs update trends
 - Identify geographic and demographic patterns
 - Detect anomalies in update behavior
 - Generate predictive insights using machine learning
 <br>
-## 🛠️ Tech Stack
+<b>TECH STACK</b>
 - Python
 - Pandas, NumPy
 - Matplotlib, Seaborn
 - Scikit-learn
 <br>
-## 📂 Project Structure
+<b>PROJECT STRUCTURE</b>
 AADHAR ANALYSIS/<br>
 ├── DATA/# Input datasets     <br>   
 ├── FIGURES/# Generated visualizations  <br>   
@@ -22,7 +22,7 @@ AADHAR ANALYSIS/<br>
 ├── README.md<br>
 └── .gitignore<br>
 <br>
-<b>▶️ How to Run</b>
+<b>HOW TO RUN IN THE TERMINAL</b>
 bash<br>
 cd AADHAR\ ANALYSIS<br>
 python SRC/analysis.py
