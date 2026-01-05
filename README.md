@@ -1,19 +1,20 @@
 # UIDAI Aadhaar Analytics
+<b>📌 PROJECT OVERVIEW</b>
 UIDAI Aadhaar Data Analytics & Machine Learning project that analyzes enrolment and update data to identify temporal, geographic, and demographic trends. The project focuses on trend detection, anomaly identification, and predictive insights to support data-driven governance.<br>
 Author-Shivani Konnur<br>
-<b>OBJECTIVES</b>
+<b>🎯 OBJECTIVES</b>
 - Analyze Aadhaar enrolment vs update trends
 - Identify geographic and demographic patterns
 - Detect anomalies in update behavior
 - Generate predictive insights using machine learning
 <br>
-<b>TECH STACK</b>
+<b>🛠️ TECH STACK</b>
 - Python
 - Pandas, NumPy
 - Matplotlib, Seaborn
 - Scikit-learn
 <br>
-<b>PROJECT STRUCTURE</b>
+<b>📂 PROJECT STRUCTURE</b>
 AADHAR ANALYSIS/<br>
 ├── DATA/# Input datasets     <br>   
 ├── FIGURES/# Generated visualizations  <br>   
@@ -22,17 +23,17 @@ AADHAR ANALYSIS/<br>
 ├── README.md<br>
 └── .gitignore<br>
 <br>
-<b>HOW TO RUN IN THE TERMINAL</b>
+<b>📊 HOW TO RUN IN THE TERMINAL</b>
 bash<br>
 cd AADHAR\ ANALYSIS<br>
 python SRC/analysis.py<br>
-<b>DATASET INFORMATION</b>
+<b>📄 DATASET INFORMATION</b>
 The dataset used in this project was officially provided by the Government of India for a hackathon and is not publicly distributable.<br>
 
 Due to data usage and licensing constraints, the raw dataset is not included in this repository.<br>
 
 However, the complete data processing, analysis, visualization, and machine learning pipeline is fully implemented and reproducible with authorized access to the dataset.<br>
-<b>DATASET SCHEMA</b>
+<b>🗂️ DATASET SCHEMA</b>
 
 | Column Name | Description |<br>
 | State | Indian state name |<br>
