@@ -9,14 +9,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import IsolationForest
 from sklearn.linear_model import LinearRegression
 
-# --------------------------------
+
 # CREATE FIGURES FOLDER SAFELY
-# --------------------------------
 os.makedirs("figures", exist_ok=True)
 
-# --------------------------------
+
 # DATA LOADING
-# --------------------------------
 def load_csvs(folder_path):
     files = [
         os.path.join(folder_path, f)
@@ -30,9 +28,8 @@ df_enrol = load_csvs("DATA/api_data_aadhar_enrolment")
 df_bio = load_csvs("DATA/api_data_aadhar_biometric")
 df_demo = load_csvs("DATA/api_data_aadhar_demographic")
 
-# --------------------------------
+
 # PREPROCESSING
-# --------------------------------
 def preprocess(df):
     df = df.copy()
 
@@ -52,9 +49,7 @@ df_enrol = preprocess(df_enrol)
 df_bio = preprocess(df_bio)
 df_demo = preprocess(df_demo)
 
-# --------------------------------
 # MONTHLY AGGREGATION
-# --------------------------------
 def aggregate_monthly(df):
     numeric_cols = df.select_dtypes(include='number').columns
     return df.groupby(['year', 'month', 'state'], as_index=False)[numeric_cols].sum()
@@ -64,9 +59,7 @@ enrol_m = aggregate_monthly(df_enrol)
 bio_m = aggregate_monthly(df_bio)
 demo_m = aggregate_monthly(df_demo)
 
-# --------------------------------
 # MASTER DATASET
-# --------------------------------
 df_master = (
     enrol_m.merge(bio_m, on=['year', 'month', 'state'], how='left')
            .merge(demo_m, on=['year', 'month', 'state'], how='left')
@@ -74,9 +67,7 @@ df_master = (
 
 df_master.fillna(0, inplace=True)
 
-# --------------------------------
 # FEATURE ENGINEERING
-# --------------------------------
 df_master['total_enrolments'] = df_master[
     ['age_0_5', 'age_5_17', 'age_18_greater']
 ].sum(axis=1)
@@ -90,9 +81,7 @@ df_master['update_intensity'] = (
     df_master['total_updates'] / (df_master['total_enrolments'] + 1)
 )
 
-# --------------------------------
 # AI – ANOMALY DETECTION
-# --------------------------------
 features = df_master[['total_enrolments', 'total_updates', 'update_intensity']]
 X_scaled = StandardScaler().fit_transform(features)
 
@@ -113,9 +102,7 @@ plt.title("AI-based Anomaly Detection in Aadhaar Activity")
 plt.savefig("figures/anomaly_detection.png")
 plt.show()
 
-# --------------------------------
 # ML – PREDICTION
-# --------------------------------
 trend = df_master.groupby(['year','month'], as_index=False)['total_updates'].sum()
 trend['time_index'] = np.arange(len(trend))
 
@@ -131,9 +118,7 @@ plt.title("ML-based Prediction of Aadhaar Update Load")
 plt.savefig("figures/update_prediction.png")
 plt.show()
 
-# =====================================================
 # UNIVARIATE ANALYSIS
-# =====================================================
 # Enrolment Trend
 enrol_uni = enrol_m.groupby(['year','month'], as_index=False)[
     ['age_0_5','age_5_17','age_18_greater']
@@ -168,9 +153,7 @@ plt.title("Univariate: Biometric Update Trend")
 plt.savefig("figures/univariate_biometric.png")
 plt.show()
 
-# =====================================================
 # BIVARIATE ANALYSIS
-# =====================================================
 plt.figure(figsize=(8,6))
 sns.scatterplot(data=df_master, x='total_enrolments', y='total_updates')
 plt.title("Bivariate: Enrolments vs Updates")
@@ -185,9 +168,7 @@ plt.title("Bivariate: Top States by Enrolment")
 plt.savefig("figures/bivariate_state_enrolment.png")
 plt.show()
 
-# =====================================================
 # TRIVARIATE ANALYSIS
-# =====================================================
 heatmap_data = df_master.groupby(['state','month'])['update_intensity'].mean().unstack()
 
 plt.figure(figsize=(12,6))
@@ -209,4 +190,3 @@ plt.title("Trivariate: Age Group × Time × Enrolment")
 plt.savefig("figures/trivariate_age_time.png")
 plt.show()
 
-print("✅ Analysis complete. All graphs generated.")
